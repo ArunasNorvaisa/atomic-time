@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-height: 98vh;
+  background-color: #000;
+  color: #fff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.localTime {
+  width: 98%;
+  font-size: 16vw;
+}
