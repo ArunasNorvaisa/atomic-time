@@ -1,12 +1,12 @@
 # Atomic time application
-Gets atomic time based on user's location. Geolocation MUST be enabled in the browser in order for the application to work.
+Gets atomic time based on user's location.
 
 Made using React hooks (useState, useEffect, useRef).
 
 It is my first experience with typescript, so please bear with me... Or, create a PR and make the code better. ;)
 
 ### Version
-* 1.0.0
+* 1.0.1
 
 ### Demo
 * [https://arunas.org/time](https://arunas.org/time)

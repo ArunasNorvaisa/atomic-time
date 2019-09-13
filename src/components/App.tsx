@@ -69,8 +69,10 @@ function App() {
     setCoords({lat: crd.latitude, lng: crd.longitude});
   };
 
-  const geoError = (err: any) => {
+  const geoError = async (err: any) => {
     console.warn(`ERROR(${err.code}): ${err.message}`);
+    const resp = await getAsync('https://ipapi.co/json');
+    setCoords({lat: resp.latitude, lng: resp.longitude});
   };
 
   const getCity = async () => {
