@@ -1,9 +1,9 @@
 # Atomic time application
-Gets atomic time based on user's location.
+Displays atomic time based on user's location.
 
-Made using React hooks (useState, useEffect, useRef).
+Made with React hooks (useState, useEffect, useRef).
 
-It is my first experience with typescript, so please bear with me... Or, create a PR and make the code better. ;)
+This is my first experience with typescript, so please bear with me... Or don't complain, create a PR and improve the code. ;)
 
 ### Version
 * 1.0.1
