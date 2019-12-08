@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactLoading from 'react-loading';
+import React from "react";
+import ReactLoading from "react-loading";
 
-import './Spinner.css';
+import "./Spinner.css";
 
-const Spinner = (props: any) => (
-  <div className='spinnerContainer'>
-    <ReactLoading
-      type={props.type}
-      color={props.color}
-      width={'10%'}
-      height={'10%'}
-    />
+interface Props {
+  type: any;
+  color: string;
+}
+
+const Spinner: React.FC<Props> = ({ type, color }) => (
+  <div className="spinnerContainer">
+    <ReactLoading type={type} color={color} width={"10%"} height={"10%"} />
   </div>
 );
 

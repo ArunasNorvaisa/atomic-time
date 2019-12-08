@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { getTime } from "../functions/functions";
-import { options } from "../functions/options";
+import {getTime} from '../functions/functions';
+import {options} from '../functions/options';
 
-import "./Cities.css";
+import './Cities.css';
 
 interface Props {
   diff: number;
@@ -14,26 +14,26 @@ interface City {
   timezone: string;
 }
 
-function Cities(props: Props) {
+function Cities(props: Props): React.ReactElement {
   const citiesArray: Array<City> = [
-    { name: "Los Angeles", timezone: "America/Los_Angeles" },
-    { name: "New York", timezone: "America/New_York" },
-    { name: "GMT / UTC", timezone: "UTC" },
-    { name: "New Delhi", timezone: "Asia/Kolkata" },
-    { name: "Hong Kong", timezone: "Asia/Hong_Kong" },
-    { name: "Kyoto", timezone: "Asia/Tokyo" },
-    { name: "Fiji", timezone: "Pacific/Fiji" },
-    { name: "Chatham Islands, NZ", timezone: "Pacific/Chatham" }
+    {name: 'Los Angeles', timezone: 'America/Los_Angeles'},
+    {name: 'New York', timezone: 'America/New_York'},
+    {name: 'GMT / UTC', timezone: 'UTC'},
+    {name: 'New Delhi', timezone: 'Asia/Kolkata'},
+    {name: 'Hong Kong', timezone: 'Asia/Hong_Kong'},
+    {name: 'Kyoto', timezone: 'Asia/Tokyo'},
+    {name: 'Fiji', timezone: 'Pacific/Fiji'},
+    {name: 'Chatham Islands, NZ', timezone: 'Pacific/Chatham'}
   ];
 
-  const cityTime = (city: City) => {
-    const timezone: Object = { timeZone: city.timezone };
-    const optionsTime: Object = {
-      ...(options.time.withoutSeconds as Object),
+  const cityTime = (city: City): React.ReactElement => {
+    const timezone: object = {timeZone: city.timezone};
+    const optionsTime: object = {
+      ...(options.time.withoutSeconds as object),
       ...timezone
     };
     const optionsDate: Object = {
-      ...(options.date.YMD as Object),
+      ...(options.date.YMD as object),
       ...timezone
     };
     return (

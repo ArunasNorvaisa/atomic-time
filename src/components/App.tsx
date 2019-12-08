@@ -7,7 +7,7 @@ import Spinner from "./Spinner";
 
 import "./App.css";
 
-function App() {
+function App():React.ReactElement {
   const [diff, setDiff] = useState<number>(0);
   const [time, setTime] = useState<string>("");
   const [coords, setCoords] = useState<any>({ lat: 0, lng: 0 });
@@ -17,17 +17,17 @@ function App() {
   const firstUpdate1 = useRef<boolean>(true);
   const firstUpdate2 = useRef<boolean>(true);
 
-  useEffect(() => {
+  useEffect((): void => {
     getTimeDiff();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
+  useEffect((): void => {
     document.title = `${getTime(options.time.withoutSeconds, diff)}`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [time]);
 
-  useEffect(() => {
+  useEffect((): void => {
     // We use below check so this effect will not run during the first update
     if (firstUpdate1.current) {
       firstUpdate1.current = false;
@@ -42,7 +42,7 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [diff]);
 
-  useEffect(() => {
+  useEffect((): void => {
     // We use below check so this effect will not run during the first update
     if (firstUpdate2.current) {
       firstUpdate2.current = false;
@@ -52,33 +52,31 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coords]);
 
-  const getTimeDiff = async () => {
+  const getTimeDiff = async (): Promise<void> => {
     const resp = await getAsync("https://worldtimeapi.org/api/ip");
-    // console.time('ms');
     const atomTime: number = new Date(resp.datetime as string).getTime();
     const PCTime: number = Date.now();
     const difference: number = PCTime - atomTime;
     setDiff(difference);
-    // console.timeEnd('ms');
   };
 
-  const exactTime = () => {
+  const exactTime = (): void => {
     setTime(getTime(options.time.withSeconds as Object, diff));
     requestAnimationFrame(exactTime);
   };
 
-  const geoSuccess = (pos: any) => {
+  const geoSuccess = (pos: any): void => {
     const crd = pos.coords;
     setCoords({ lat: crd.latitude, lng: crd.longitude });
   };
 
-  const geoError = async (err: any) => {
+  const geoError = async (err: any): Promise<void> => {
     console.warn(`ERROR(${err.code}): ${err.message}`);
     const resp = await getAsync("https://ipapi.co/json");
     setCoords({ lat: resp.latitude, lng: resp.longitude });
   };
 
-  const getCity = async () => {
+  const getCity = async (): Promise<void> => {
     const resp = await getAsync(
       `https://geocode.xyz/${coords.lat},${coords.lng}?json=1`
     );
@@ -86,15 +84,13 @@ function App() {
     setLoaded(true);
   };
 
-  return !loaded ? (
-    <Spinner type={"spokes"} color={"#fff"} />
-  ) : (
-    <div className="container">
+  return !loaded
+    ? <Spinner type={"spokes"} color={"#fff"} />
+    : <div className="container">
       <h1 className="cityName">Local atomic time in {city}:</h1>
       <h1 className="localTime">{time}</h1>
       <Cities diff={diff} />
-    </div>
-  );
+    </div>;
 }
 
 export default App;
