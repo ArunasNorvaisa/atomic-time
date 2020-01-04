@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from 'react';
 
-import { getTime, getAsync } from "../functions/functions";
-import { options } from "../functions/options";
-import Cities from "./Cities";
-import Spinner from "./Spinner";
+import {getAsync, getTime} from '../functions/functions';
+import {options} from '../functions/options';
+import Cities from './Cities';
+import Spinner from './Spinner';
 
-import "./App.css";
+import './App.css';
 
 function App():React.ReactElement {
   const [diff, setDiff] = useState<number>(0);
@@ -85,7 +85,7 @@ function App():React.ReactElement {
   };
 
   return !loaded
-    ? <Spinner type={"spokes"} color={"#fff"} />
+    ? <Spinner type={'Watch'} />
     : <div className="container">
       <h1 className="cityName">Local atomic time in {city}:</h1>
       <h1 className="localTime">{time}</h1>
