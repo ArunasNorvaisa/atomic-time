@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {getTime} from '../functions/functions';
-import {options} from '../functions/options';
+import { getTime } from '../functions/functions';
+import { options } from '../functions/options';
 
 import './Cities.css';
 
@@ -15,7 +15,7 @@ interface City {
 }
 
 function Cities(props: Props): React.ReactElement {
-  const citiesArray: Array<City> = [
+  const citiesArray: City[] = [
     {name: 'Los Angeles', timezone: 'America/Los_Angeles'},
     {name: 'New York', timezone: 'America/New_York'},
     {name: 'GMT / UTC', timezone: 'UTC'},

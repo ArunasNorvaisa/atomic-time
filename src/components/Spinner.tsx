@@ -3,10 +3,10 @@ import Loader from 'react-loader-spinner';
 
 import './Spinner.css';
 
-type SpinnerTypes = 'Watch' | 'Audio' | 'BallTriangle' | 'Bars' | 'Circles' | 'Grid' | 'Hearts' | 'Oval' | 'Puff' | 'Rings' | 'TailSpin' | 'ThreeDots' | 'RevolvingDot' | 'Triangle' | 'Plane' | 'MutatingDots' | 'None' | 'NotSpecified' | undefined;
+type SpinnerType = 'Watch' | 'Audio' | 'BallTriangle' | 'Bars' | 'Circles' | 'Grid' | 'Hearts' | 'Oval' | 'Puff' | 'Rings' | 'TailSpin' | 'ThreeDots' | 'RevolvingDot' | 'Triangle' | 'Plane' | 'MutatingDots' | 'None' | 'NotSpecified' | undefined;
 
 interface Props {
-  type: SpinnerTypes;
+  type: SpinnerType;
   color?: string;
 }
 

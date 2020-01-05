@@ -1,7 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import {getAsync, getTime} from '../functions/functions';
-import {options} from '../functions/options';
+import { getAsync, getTime } from '../functions/functions';
+import { options } from '../functions/options';
 import Cities from './Cities';
 import Spinner from './Spinner';
 

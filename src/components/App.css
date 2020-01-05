@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:500&display=swap&subset=latin-ext');
+
 .container {
   display: flex;
   flex-direction: column;
@@ -10,5 +12,7 @@
 
 .localTime {
   width: 98%;
-  font-size: 16vw;
+  font-size: 13vw;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
 }
