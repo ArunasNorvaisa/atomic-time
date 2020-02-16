@@ -16,3 +16,27 @@
   font-family: 'Roboto Mono', monospace;
   font-weight: 500;
 }
+
+.d-flex {
+  display: flex;
+}
+
+.d-none {
+  display: none;
+}
+
+.flex-justify-content-space-between {
+  justify-content: space-between;
+}
+
+.input {
+  display: block;
+}
+
+.input-main {
+  padding: 5px;
+}
+
+.m-xl {
+  margin: 24px;
+}

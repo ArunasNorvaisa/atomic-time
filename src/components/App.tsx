@@ -7,11 +7,16 @@ import Spinner from './Spinner';
 
 import './App.css';
 
+interface Coords {
+  lat: number;
+  lng: number;
+}
+
 function App():React.ReactElement {
   const [diff, setDiff] = useState<number>(0);
-  const [time, setTime] = useState<string>("");
-  const [coords, setCoords] = useState<any>({ lat: 0, lng: 0 });
-  const [city, setCity] = useState<string>("");
+  const [time, setTime] = useState<string>('');
+  const [coords, setCoords] = useState<Coords>({ lat: 0, lng: 0 });
+  const [city, setCity] = useState<string>('');
   const [loaded, setLoaded] = useState<boolean>(false);
 
   const firstUpdate1 = useRef<boolean>(true);
@@ -84,10 +89,24 @@ function App():React.ReactElement {
     setLoaded(true);
   };
 
+  const searchCities = async (): Promise<void> => {
+    const resp = await getAsync(
+      `https://geocode.xyz/${city}?json=1`
+    );
+    setCoords({ lat: resp.latt, lng: resp.longt });
+    setLoaded(true);
+  };
+
   return !loaded
     ? <Spinner type={'Watch'} />
     : <div className="container">
-      <h1 className="cityName">Local atomic time in {city}:</h1>
+      <div className="d-flex flex-justify-content-space-between">
+        <h1 className="cityName m-xl">Local atomic time in {city}:</h1>
+        <form className="m-xl">
+          <input type="text" className='input input-main' onChange={e => setCity(e.target.value)} />
+          <button className="d-none" onClick={searchCities} />
+        </form>
+      </div>
       <h1 className="localTime">{time}</h1>
       <Cities diff={diff} />
     </div>;
