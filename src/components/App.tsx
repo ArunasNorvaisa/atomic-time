@@ -60,8 +60,7 @@ function App():React.ReactElement {
   const getTimeDiff = async (): Promise<void> => {
     const resp = await getAsync("https://worldtimeapi.org/api/ip");
     const atomTime: number = new Date(resp.datetime as string).getTime();
-    const PCTime: number = Date.now();
-    const difference: number = PCTime - atomTime;
+    const difference: number = Date.now() - atomTime;
     setDiff(difference);
   };
 
@@ -77,7 +76,7 @@ function App():React.ReactElement {
 
   const geoError = async (err: any): Promise<void> => {
     console.warn(`ERROR(${err.code}): ${err.message}`);
-    const resp = await getAsync("https://ipapi.co/json");
+    const resp = await getAsync("https://ipwhois.app/json/");
     setCoords({ lat: resp.latitude, lng: resp.longitude });
   };
 
@@ -85,15 +84,7 @@ function App():React.ReactElement {
     const resp = await getAsync(
       `https://geocode.xyz/${coords.lat},${coords.lng}?json=1`
     );
-    setCity(resp.alt.loc[0].city || resp.city);
-    setLoaded(true);
-  };
-
-  const searchCities = async (): Promise<void> => {
-    const resp = await getAsync(
-      `https://geocode.xyz/${city}?json=1`
-    );
-    setCoords({ lat: resp.latt, lng: resp.longt });
+    setCity(resp.city || resp.alt.loc[0].city);
     setLoaded(true);
   };
 
@@ -102,10 +93,6 @@ function App():React.ReactElement {
     : <div className="container">
       <div className="d-flex flex-justify-content-space-between">
         <h1 className="cityName m-xl">Local atomic time in {city}:</h1>
-        <form className="m-xl">
-          <input type="text" className='input input-main' onChange={e => setCity(e.target.value)} />
-          <button className="d-none" onClick={searchCities} />
-        </form>
       </div>
       <h1 className="localTime">{time}</h1>
       <Cities diff={diff} />
