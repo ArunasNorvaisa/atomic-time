@@ -58,7 +58,7 @@ function App():React.ReactElement {
   }, [coords]);
 
   const getTimeDiff = async (): Promise<void> => {
-    const resp = await getAsync("https://worldtimeapi.org/api/ip");
+    const resp = await getAsync('https://worldtimeapi.org/api/ip');
     const atomTime: number = new Date(resp.datetime as string).getTime();
     const difference: number = Date.now() - atomTime;
     setDiff(difference);
@@ -81,10 +81,11 @@ function App():React.ReactElement {
   };
 
   const getCity = async (): Promise<void> => {
+    const API_KEY = process.env.REACT_APP_LOCATIONIQ_API_KEY;
     const resp = await getAsync(
-      `https://geocode.xyz/${coords.lat},${coords.lng}?json=1`
+      `https://us1.locationiq.com/v1/reverse.php?key=${API_KEY}&lat=${coords.lat}&lon=${coords.lng}&format=json`
     );
-    setCity(resp.city || resp.alt.loc[0].city);
+    setCity(resp.address.city || resp.address.town || resp.address.village || resp.address.municipality || resp.address.country);
     setLoaded(true);
   };
 
